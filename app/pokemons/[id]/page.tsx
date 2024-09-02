@@ -1,7 +1,12 @@
 "use server";
 
-const PokemonPage = async ({ params }: { params: { id: string } }) => {
-  return <div>Pokemon #{params.id}</div>;
+import PokemonDetails from "@/src/components/PokemonDetails/PokemonDetails";
+import { getPokemonDetails } from "@/src/stores/pokemons.store";
+
+const PokemonPage = async ({ params }: { params: { id: number } }) => {
+  const pokemon = await getPokemonDetails(params.id);
+  
+  return <PokemonDetails pokemon={pokemon} />;
 };
 
 export default PokemonPage;

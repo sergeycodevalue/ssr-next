@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="min-h-screen bg-gray-700 select-none">
           <AppHeader />
-          <main className="flex flex-col items-center justify-between pt-12">
+          <main className="flex flex-col items-center justify-between pt-12 pb-12">
             {children}
           </main>
         </div>
