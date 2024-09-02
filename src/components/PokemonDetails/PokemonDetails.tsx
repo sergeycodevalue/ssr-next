@@ -1,3 +1,5 @@
+import ToggleCart, { IPokemonDetails } from "./ToggleCart";
+
 interface IPokemonFullDetailsAbility {
   ability: {
     name: string;
@@ -36,6 +38,7 @@ const PokemonDetails = ({ pokemon }: PokemonListProps) => {
         <h3 className="text-l text-white">Height: {pokemon.height}</h3>
         <h3 className="text-l text-white">weight: {pokemon.weight}</h3>
       </div>
+      <ToggleCart pokemon={pokemon as unknown as IPokemonDetails} />
     </div>
   );
 };

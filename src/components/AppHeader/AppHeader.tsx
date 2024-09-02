@@ -1,8 +1,12 @@
 "use client";
 
-import Link from 'next/link';
+import Link from "next/link";
+
+import { useCartStore } from "@/src/stores/cart.store";
 
 export default () => {
+  const pokemons = useCartStore(({ pokemons }) => pokemons);
+
   return (
     <div
       className="sticky top-0 flex flex-row justify-between items-center h-16 px-8 py-1 z-50"
@@ -19,9 +23,15 @@ export default () => {
         </Link>
       </div>
       <div className="flex">
-        <a href="#" className="text-xl text-white hover:text-blue">
-          Login
-        </a>
+        <Link
+          href="/cart"
+          className="relative ml-2 text-xl text-white hover:text-blue"
+        >
+          <span className="absolute -top-2 -right-4 rounded-[50%] w-5 h-5 p-0.5 flex justify-center text-xs bg-blue-500">
+            {pokemons.length}
+          </span>
+          Cart
+        </Link>
       </div>
     </div>
   );
