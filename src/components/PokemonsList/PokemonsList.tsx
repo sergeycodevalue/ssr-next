@@ -9,9 +9,13 @@ interface PokemonListProps {
   pokemons: IPokemonDetails[];
 }
 const PokemonsList = ({ pokemons }: PokemonListProps) => {
-  return pokemons.map((pokemon) => (
-    <PokemonDetails key={pokemon.name} pokemon={pokemon} />
-  ));
+  return (
+    <>
+      {pokemons.map((pokemon) => (
+        <PokemonDetails key={pokemon.name} pokemon={pokemon} />
+      ))}
+    </>
+  );
 };
 
 export default PokemonsList;
