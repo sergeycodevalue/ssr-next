@@ -1,12 +1,14 @@
-"use client";
-
 import Link from "next/link";
 
-import { useCartStore } from "@/src/stores/cart.store";
+import { getUser } from "@/data/services/user-services";
 
-export default () => {
-  const pokemons = useCartStore(({ pokemons }) => pokemons);
+import Cart from "./Cart";
+import LoginLinks from "./LoginLinks";
+import LogoutButton from "./LogoutButton";
 
+const AppHeader = async () => {
+  const user = await getUser();
+  
   return (
     <div
       className="sticky top-0 flex flex-row justify-between items-center h-16 px-8 py-1 z-50"
@@ -23,16 +25,13 @@ export default () => {
         </Link>
       </div>
       <div className="flex">
-        <Link
-          href="/cart"
-          className="relative ml-2 text-xl text-white hover:text-blue"
-        >
-          <span className="absolute -top-2 -right-4 rounded-[50%] w-5 h-5 p-0.5 flex justify-center text-xs bg-blue-500">
-            {pokemons.length}
-          </span>
-          Cart
-        </Link>
+        <Cart />
+        <div className="flex ml-8 text-xl">
+          {user.data ? <LogoutButton /> : <LoginLinks />}
+        </div>
       </div>
     </div>
   );
 };
+
+export default AppHeader;
