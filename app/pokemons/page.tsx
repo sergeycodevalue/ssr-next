@@ -3,11 +3,8 @@
 import PokemonsList from "@/src/components/PokemonsList/PokemonsList";
 import { getPokemons, getPokemonsDetails } from "@/src/stores/pokemons.store";
 
-// const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
-
 const PokemonsPage = async () => {
   const pokemons = await getPokemons();
-  // await delay(3000);
   const pokemonsDetails = await getPokemonsDetails(pokemons.results);
 
   return (
